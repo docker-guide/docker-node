@@ -20,11 +20,11 @@ yarn:1.22.4
 
 
 ```js
-FROM rdmix/node-build:v0.0.3 AS builder
+FROM registry.cn-beijing.aliyuncs.com/rdmix/node-build:v1 AS builder
 COPY package.json package-lock.json ./
 RUN npm install --production
 
-FROM rdmix/node-run:v0.0.4
+FROM registry.cn-beijing.aliyuncs.com/rdmix/node-run:v1
 WORKDIR /home/app
 COPY --from=builder /home/app/node_modules ./node_modules
 COPY . .
