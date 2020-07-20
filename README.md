@@ -1,4 +1,5 @@
 ## base
+
 * size: 62.4mb
 ```
 node:v12.17.0
@@ -7,6 +8,7 @@ yarn:1.22.4
 ```
 
 ## build
+国内地址：registry.cn-beijing.aliyuncs.com/rdmix/node-build:v1
 * size: 62.4mb
 ```
 node:v12.17.0
@@ -15,6 +17,7 @@ yarn:1.22.4
 ```
 
 ## run
+国内镜像：registry.cn-beijing.aliyuncs.com/rdmix/node-run:v1
 * pm2:4.4.0 
 * size:95.9mb
 
