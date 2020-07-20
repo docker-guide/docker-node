@@ -1,0 +1,10 @@
+FROM alpine
+LABEL maintainer="starkwang starkland@163.com"
+LABEL name="node-run"
+LABEL version="latest"
+WORKDIR /home/app
+
+RUN apk add --no-cache --update nodejs nodejs-npm yarn \
+  && npm i -g pm2 \
+  && pm2 -v && node -v && npm -v && yarn -v
+

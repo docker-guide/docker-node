@@ -1,0 +1,9 @@
+FROM alpine
+LABEL maintainer="starkwang starkland@163.com"
+LABEL name="node-base"
+LABEL version="latest"
+WORKDIR /home/app
+
+RUN apk add --no-cache --update nodejs nodejs-npm yarn \
+  && node -v && npm -v && yarn -vdocker
+
