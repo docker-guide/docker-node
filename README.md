@@ -33,3 +33,8 @@ COPY --from=builder /home/app/node_modules ./node_modules
 COPY . .
 CMD [ "pm2-runtime", "start", "app.js" ]
 ```
+
+```
+国内地址：registry.cn-beijing.aliyuncs.com/rdmix/node-build:v1
+国内镜像：registry.cn-beijing.aliyuncs.com/rdmix/node-run:v1
+```
