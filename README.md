@@ -17,7 +17,7 @@ yarn:1.22.4
 ```
 
 ## run
-国内镜像：registry.cn-beijing.aliyuncs.com/rdmix/node-run:v1
+国内镜像：registry.cn-beijing.aliyuncs.com/rdmix/node-run:v2
 * pm2:4.4.0 
 * size:95.9mb
 
