@@ -38,3 +38,8 @@ CMD [ "pm2-runtime", "start", "app.js" ]
 国内地址：registry.cn-beijing.aliyuncs.com/rdmix/node-build:v1
 国内镜像：registry.cn-beijing.aliyuncs.com/rdmix/node-run:v1
 ```
+
+
+## 2021年03月23日
+增加  sharp 上海时区
+registry.cn-hongkong.aliyuncs.com/rdmix/node-base-run:v1
