@@ -1,4 +1,4 @@
-FROM alpine
+FROM nikolaik/python-nodejs:python3.6-nodejs12-alpine
 LABEL maintainer="starkwang starkland@163.com"
 LABEL name="node-run"
 LABEL version="latest"
