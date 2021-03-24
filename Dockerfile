@@ -6,7 +6,8 @@ WORKDIR /home/app
 
 ADD vips-8.10.5.tar.gz ./
 
-RUN cd vips-8.10.5 && ./configure && make && make install && cd .. \
+RUN apk add --no-cache gcc \
+  && cd vips-8.10.5 && ./configure && make && make install && cd .. \
   && npm install  pm2  -g \
   && rm -rf /var/cache/apk/* \
   && rm -rf vips-8.10.5 \
