@@ -4,8 +4,7 @@ LABEL name="node-run"
 LABEL version="latest"
 WORKDIR /home/app
 
-RUN apk add --no-cache --update curl vi \
-  && npm install  pm2  -g\
+RUN npm install  pm2  -g \
   && rm -rf /var/cache/apk/* \
   # 设置时区
   && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone
