@@ -1,4 +1,5 @@
-FROM nikolaik/python-nodejs:python3.6-nodejs12-alpine
+FROM nikolaik/python-nodejs:python3.6-nodejs12-slim
+
 LABEL maintainer="starkwang starkland@163.com"
 LABEL name="node-base"
 LABEL version="latest"
@@ -6,8 +7,7 @@ WORKDIR /home/app
 
 ADD vips-8.10.5.tar.gz ./
 
-RUN apk add --no-cache gcc g++ pkgconfig\
-  && cd vips-8.10.5 && ./configure && make && make install && cd .. \
+RUN cd vips-8.10.5 && ./configure && make && make install && cd .. \
   && npm install  pm2  -g \
   && rm -rf /var/cache/apk/* \
   && rm -rf vips-8.10.5 \
