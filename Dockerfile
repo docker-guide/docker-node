@@ -1,24 +1,14 @@
-FROM rdmix/ubuntu-base:v0.0.1
+FROM alpine
 LABEL maintainer="starkwang starkland@163.com"
-LABEL name="node-env"
+LABEL name="node-run"
 LABEL version="latest"
+WORKDIR /home/app
 
-RUN curl -sL https://deb.nodesource.com/setup_12.x | bash
-RUN apt-get install -y nodejs
+RUN apk add --no-cache --update nodejs nodejs-npm yarn curl \
+  && rm -rf /var/cache/apk/* \
+  && npm i -g pm2 \
+  && pm2 -v && node -v && npm -v && yarn -v \
+  # 设置时区
+  && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone
 
-RUN npm install -g yarn
-RUN yarn global add pm2
-
-# Set china mirror
-# RUN echo "alias yarn='yarn --registry=https://registry.npm.taobao.org'" >> /etc/bash.bashrc
-
-# Print node versions
-RUN node -v
-RUN npm -v
-
-RUN yarn config list
-
-# Set WORKDIR to nvm directory
-WORKDIR /home
-
-ENTRYPOINT ["/bin/bash"]
+RUN yarn add sharp
