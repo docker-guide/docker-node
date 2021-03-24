@@ -5,8 +5,8 @@ LABEL version="latest"
 WORKDIR /home/app
 
 RUN apk add --no-cache --update nodejs nodejs-npm yarn curl \
-  && npm i -g pm2 \
-  && pm2 -v \
+  && yarn global add pm2 \
+  && pm2 -V \
   && node -v && npm -v && yarn -v \
   && rm -rf /var/cache/apk/* \
   # 设置时区
