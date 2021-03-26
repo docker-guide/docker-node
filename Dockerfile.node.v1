@@ -1,0 +1,26 @@
+# FROM alpine:3.7
+# ENV VERSION=v10.24.0 NPM_VERSION=6 YARN_VERSION=v1.22.10 NODE_BUILD_PYTHON=python
+
+# FROM alpine:3.9
+# ENV VERSION=v12.21.0 NPM_VERSION=6 YARN_VERSION=v1.22.10 NODE_BUILD_PYTHON=python
+
+# FROM alpine:3.11
+# ENV VERSION=v14.16.0 NPM_VERSION=6 YARN_VERSION=v1.22.10 NODE_BUILD_PYTHON=python3
+FROM node:lts-alpine3.13
+ENV VERSION=v14.16.0 NPM_VERSION=6 YARN_VERSION=v1.22.10 NODE_BUILD_PYTHON=python3
+
+LABEL maintainer="starkwang starkland@163.com"
+LABEL name="node-test-base"
+LABEL version="latest"
+
+RUN apk upgrade --no-cache -U && \
+  apk add --no-cache curl make gcc g++ ${NODE_BUILD_PYTHON} linux-headers binutils-gold gnupg libstdc++
+
+RUN apk upgrade --no-cache -U && \
+  # apk add  curl ${NODE_BUILD_PYTHON} \
+  npm i -g pm2 \
+  && pm2 -v && node -v && npm -v && yarn -v \
+  # 设置时区
+  && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone
+
+RUN yarn add sharp
