@@ -6,8 +6,7 @@
 
 # FROM alpine:3.11
 # ENV VERSION=v14.16.0 NPM_VERSION=6 YARN_VERSION=v1.22.10 NODE_BUILD_PYTHON=python3
-node:lts-alpine3.13
-FROM alpine:3.12
+FROM alpine:3.13
 ENV VERSION=v14.16.0 NPM_VERSION=6 YARN_VERSION=v1.22.10 NODE_BUILD_PYTHON=python3
 
 RUN apk upgrade --no-cache -U && \
