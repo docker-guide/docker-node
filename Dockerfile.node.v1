@@ -13,8 +13,8 @@ LABEL maintainer="starkwang starkland@163.com"
 LABEL name="node-test-base"
 LABEL version="latest"
 
-RUN apk upgrade --no-cache -U && \
-  apk add --no-cache curl make gcc g++ ${NODE_BUILD_PYTHON} linux-headers binutils-gold gnupg libstdc++
+# RUN apk upgrade --no-cache -U && \
+#   apk add --no-cache curl make gcc g++ ${NODE_BUILD_PYTHON} linux-headers binutils-gold gnupg libstdc++
 
 RUN apk upgrade --no-cache -U && \
   # apk add  curl ${NODE_BUILD_PYTHON} \
@@ -22,5 +22,6 @@ RUN apk upgrade --no-cache -U && \
   && pm2 -v && node -v && npm -v && yarn -v \
   # 设置时区
   && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone
-
-RUN yarn add sharp
+RUN echo 1
+WORKDIR /home/app/
+# RUN yarn add sharp

@@ -10,5 +10,5 @@ RUN apk add --no-cache --update curl vim \
   && rm -rf /var/cache/apk/* \
   # 设置时区
   && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone
-
+WORKDIR /home/app/
 RUN yarn add sharp
