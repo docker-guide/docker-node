@@ -2,13 +2,14 @@ FROM registry.cn-hongkong.aliyuncs.com/kaikeba/node:v14.16.0
 LABEL maintainer="starkwang starkland@163.com"
 LABEL name="node-run"
 LABEL version="latest"
-WORKDIR /home/app
 
-RUN apk add --no-cache --update curl vim \
-  && npm i -g pm2 \
-  && pm2 -V && node -v && npm -v && yarn -v \
-  && rm -rf /var/cache/apk/* \
-  # 设置时区
-  && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone
+RUN apk --no-cache add libpng librsvg libgsf giflib libjpeg-turbo musl \
+	&& apk add vips-dev fftw-dev build-base --update-cache  --repository https://alpine.global.ssl.fastly.net/alpine/edge/testing/  --repository https://alpine.global.ssl.fastly.net/alpine/edge/main \
+	&& apk --no-cache add --virtual .build-dependencies python2-dev python3-dev  g++ make python curl tar gtk-doc gobject-introspection expat-dev glib-dev libpng-dev libjpeg-turbo-dev giflib-dev librsvg-dev python2-dev \
+	&& su node  
+
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' > /etc/timezone
+  # 设置时
+ 
 WORKDIR /home/app/
 RUN yarn add sharp
