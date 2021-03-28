@@ -1,9 +1,8 @@
 FROM nikolaik/python-nodejs:python3.6-nodejs12
 
 LABEL maintainer="starkwang starkland@163.com"
-LABEL name="node-base"
-LABEL version="latest"
-WORKDIR /home/app
+
+WORKDIR /home/node/app/
 
 ADD vips-8.10.5.tar.gz ./
 
